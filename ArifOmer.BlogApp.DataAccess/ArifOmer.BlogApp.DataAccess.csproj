@@ -17,4 +17,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ArifOmer.BlogApp.Entities\ArifOmer.BlogApp.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
