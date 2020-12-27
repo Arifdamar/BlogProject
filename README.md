@@ -1,1 +1,3 @@
 # BlogProject
+
+açıklamalar buraya gelecek
