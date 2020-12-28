@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArifOmer.BlogApp.Entities", "ArifOmer.BlogApp.Entities\ArifOmer.BlogApp.Entities.csproj", "{6C81D39A-A61B-403F-BE3E-C7DD898C5636}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArifOmer.BlogApp.Entities", "ArifOmer.BlogApp.Entities\ArifOmer.BlogApp.Entities.csproj", "{6C81D39A-A61B-403F-BE3E-C7DD898C5636}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArifOmer.BlogApp.DataAccess", "ArifOmer.BlogApp.DataAccess\ArifOmer.BlogApp.DataAccess.csproj", "{052A5659-35F3-49B3-A258-7C8C1E83C2B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArifOmer.BlogApp.DataAccess", "ArifOmer.BlogApp.DataAccess\ArifOmer.BlogApp.DataAccess.csproj", "{052A5659-35F3-49B3-A258-7C8C1E83C2B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArifOmer.BlogApp.Business", "ArifOmer.BlogApp.Business\ArifOmer.BlogApp.Business.csproj", "{275DFDCF-1742-426B-BAD5-9A1156BACC8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{052A5659-35F3-49B3-A258-7C8C1E83C2B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{052A5659-35F3-49B3-A258-7C8C1E83C2B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{052A5659-35F3-49B3-A258-7C8C1E83C2B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{275DFDCF-1742-426B-BAD5-9A1156BACC8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{275DFDCF-1742-426B-BAD5-9A1156BACC8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{275DFDCF-1742-426B-BAD5-9A1156BACC8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{275DFDCF-1742-426B-BAD5-9A1156BACC8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
