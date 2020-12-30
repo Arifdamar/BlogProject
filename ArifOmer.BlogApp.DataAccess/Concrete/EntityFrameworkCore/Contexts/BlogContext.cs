@@ -8,7 +8,7 @@ namespace ArifOmer.BlogApp.DataAccess.Concrete.EntityFrameworkCore.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=(localdb)\\ProjectsV13; database=Blog; user id=sa; password=1;");
+            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB; database=BlogProject; integrated security=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

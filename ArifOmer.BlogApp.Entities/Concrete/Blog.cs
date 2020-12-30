@@ -13,7 +13,7 @@ namespace ArifOmer.BlogApp.Entities.Concrete
         public string ImagePath { get; set; }
         public DateTime PostedTime { get; set; } = DateTime.Now;
 
-        public int AppUserId { get; set; }
+        public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
 
         public List<CategoryBlog> CategoryBlogs { get; set; }
