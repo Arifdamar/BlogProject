@@ -1,0 +1,23 @@
+﻿@model List<BlogListDto>
+
+<div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+
+    @foreach (var blog in Model)
+    {
+        <div class="card border-primary rounded bg-secondary rainbow mb-4">
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <div class="card-body border-primary">
+                <h2 class="card-title">@blog.Title</h2>
+                <p class="card-text">@blog.ShortDescription</p>
+                <a href="@Url.Action("Index", "Blog", new {title = blog.Title})" class="btn btn-outline-primary">DEVAMINI OKU</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+                @blog.PostedTime.ToString("dd/MM/yyyy")
+            </div>
+        </div>
+    }
+
+</div>
+<div class="col-lg-4 col-md-4 col-sm-12 mx-auto">
+    @await Component.InvokeAsync("CategoryList")
+</div>

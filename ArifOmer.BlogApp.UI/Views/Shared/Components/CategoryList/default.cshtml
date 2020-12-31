@@ -1,0 +1,14 @@
+﻿@model List<CategoryListDto>
+
+<div class="card rounded">
+    <h5 class="card-header text-center">KATEGORİLER</h5>
+    <div class="list-group">
+        @foreach (var category in Model)
+        {
+            <a class="list-group-item rainbow list-group-item-action d-flex justify-content-between align-items-center">
+                @category.Name
+                <span class="badge badge-primary badge-pill">15</span>
+            </a>
+        }
+    </div>
+</div>

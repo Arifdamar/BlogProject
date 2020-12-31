@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArifOmer.BlogApp.DataAccess
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArifOmer.BlogApp.Business", "ArifOmer.BlogApp.Business\ArifOmer.BlogApp.Business.csproj", "{275DFDCF-1742-426B-BAD5-9A1156BACC8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArifOmer.BlogApp.UI", "ArifOmer.BlogApp.UI\ArifOmer.BlogApp.UI.csproj", "{C262EEFC-94B9-41F9-936F-EE0C2CE847F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArifOmer.BlogApp.UI", "ArifOmer.BlogApp.UI\ArifOmer.BlogApp.UI.csproj", "{C262EEFC-94B9-41F9-936F-EE0C2CE847F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArifOmer.BlogApp.DTO", "ArifOmer.BlogApp.DTO\ArifOmer.BlogApp.DTO.csproj", "{1B5FA4ED-C568-4479-BF65-7E406D444513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C262EEFC-94B9-41F9-936F-EE0C2CE847F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C262EEFC-94B9-41F9-936F-EE0C2CE847F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C262EEFC-94B9-41F9-936F-EE0C2CE847F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B5FA4ED-C568-4479-BF65-7E406D444513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B5FA4ED-C568-4479-BF65-7E406D444513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B5FA4ED-C568-4479-BF65-7E406D444513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B5FA4ED-C568-4479-BF65-7E406D444513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

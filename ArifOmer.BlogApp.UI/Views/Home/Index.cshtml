@@ -1,8 +1,33 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "Ana Sayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="col-lg-8 col-md-10 mx-auto">
+
+    @foreach (var blog in Model)
+    {
+        <div class="card border-primary rounded bg-secondary rainbow mb-4">
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <div class="card-body border-primary">
+                <h2 class="card-title">@blog.Title</h2>
+                <p class="card-text">@blog.ShortDescription</p>
+                <a href="@Url.Action("Detail","Blog",new {title = blog.Title})" class="btn btn-outline-primary">Daha Fazla</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+                @blog.PostedTime.ToString("dd/MM/yyyy")
+            </div>
+        </div>
+    }
+
+    @if (Model.Count() > 3)
+    {
+        <hr>
+        <!-- Pager -->
+        <div class="clearfix">
+            <a href="@Url.Action("Index","Blog")" class="btn btn-primary float-right">Tüm Bloglar</a>
+        </div>
+    }
+
 </div>

@@ -1,0 +1,112 @@
+﻿
+.main-photo {
+    background-image: url('../images/pride-home.png') !important;
+}
+
+.rainbow {
+}
+
+    .rainbow:hover {
+        animation-name: flash_border;
+        animation-duration: 3s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
+        -webkit-animation-name: flash_border;
+        -webkit-animation-duration: 3s;
+        -webkit-animation-timing-function: ease;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation-name: flash_border;
+        -moz-animation-duration: 3s;
+        -moz-animation-timing-function: ease;
+        -moz-animation-iteration-count: infinite;
+    }
+
+@keyframes flash_border {
+    0% {
+        border-color: #6699ff;
+    }
+
+    20% {
+        border-color: #33ccff;
+    }
+
+    40% {
+        border-color: #66ffcc;
+    }
+
+    60% {
+        border-color: #99ff66;
+    }
+
+    80% {
+        border-color: #ffcc66;
+    }
+
+    90% {
+        border-color: #ff66cc;
+    }
+
+    100% {
+        border-color: #cc66ff;
+    }
+}
+
+@-webkit-keyframes flash_border {
+    0% {
+        border-color: #6699ff;
+    }
+
+    20% {
+        border-color: #33ccff;
+    }
+
+    40% {
+        border-color: #66ffcc;
+    }
+
+    60% {
+        border-color: #99ff66;
+    }
+
+    80% {
+        border-color: #ffcc66;
+    }
+
+    90% {
+        border-color: #ff66cc;
+    }
+
+    100% {
+        border-color: #cc66ff;
+    }
+}
+
+@-moz-keyframes flash_border {
+    0% {
+        border-color: #6699ff;
+    }
+
+    20% {
+        border-color: #33ccff;
+    }
+
+    40% {
+        border-color: #66ffcc;
+    }
+
+    60% {
+        border-color: #99ff66;
+    }
+
+    80% {
+        border-color: #ffcc66;
+    }
+
+    90% {
+        border-color: #ff66cc;
+    }
+
+    100% {
+        border-color: #cc66ff;
+    }
+}

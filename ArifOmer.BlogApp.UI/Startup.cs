@@ -8,6 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ArifOmer.BlogApp.Business.Containers.MicrosoftIoC;
+using ArifOmer.BlogApp.DataAccess.Concrete.EntityFrameworkCore.Contexts;
+using ArifOmer.BlogApp.Entities.Concrete;
+using ArifOmer.BlogApp.UI.CustomCollectionExtensions;
+using AutoMapper;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace ArifOmer.BlogApp.UI
 {
@@ -23,11 +30,21 @@ namespace ArifOmer.BlogApp.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddDependencies();
+
+            services.AddDbContext<BlogContext>();
+
+            services.AddCustomIdentity();
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddCustomValidator();
+
+            services.AddControllersWithViews().AddFluentValidation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -39,15 +56,26 @@ namespace ArifOmer.BlogApp.UI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseStatusCodePagesWithReExecute("/Home/StatusCode", "?code={0}");
+
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseStaticFiles();
+
+            app.UseAuthentication();
+
             app.UseAuthorization();
+
+            IdentityInitializer.SeedData(userManager, roleManager).Wait();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area}/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -1,10 +1,12 @@
 ﻿using ArifOmer.BlogApp.DataAccess.Mapping;
 using ArifOmer.BlogApp.Entities.Concrete;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ArifOmer.BlogApp.DataAccess.Concrete.EntityFrameworkCore.Contexts
 {
-    public class BlogContext : DbContext
+    public class BlogContext : IdentityDbContext<AppUser, AppRole, int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -18,9 +20,10 @@ namespace ArifOmer.BlogApp.DataAccess.Concrete.EntityFrameworkCore.Contexts
             modelBuilder.ApplyConfiguration(new CategoryMap());
             modelBuilder.ApplyConfiguration(new CategoryBlogMap());
             modelBuilder.ApplyConfiguration(new CommentMap());
+
+            base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryBlog> CategoryBlogs { get; set; }
