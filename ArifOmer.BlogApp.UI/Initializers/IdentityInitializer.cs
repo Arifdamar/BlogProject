@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Task = System.Threading.Tasks.Task;
 
-namespace ArifOmer.BlogApp.UI
+namespace ArifOmer.BlogApp.UI.Initializers
 {
     public static class IdentityInitializer
     {
@@ -30,11 +30,11 @@ namespace ArifOmer.BlogApp.UI
                 {
                     Name = "Arif",
                     SurName = "Damar",
-                    UserName = "arif",
-                    Email = "arif660damar@gmail.com"
+                    UserName = "G171210009@sakarya.edu.tr",
+                    Email = "G171210009@sakarya.edu.tr"
                 };
 
-                await userManager.CreateAsync(user, "1");
+                await userManager.CreateAsync(user, "123");
                 await userManager.AddToRoleAsync(user, "Admin");
             }
         }

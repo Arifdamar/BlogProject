@@ -1,0 +1,85 @@
+﻿@model BlogAddDto
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Blog</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" class="w-75 mx-auto p-3" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ImagePath" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <input asp-for="ShortDescription" class="form-control" />
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <h5>Mevcut Fotoğrafınız</h5>
+                            @*<img src="~/images/@Model.ImagePath" class="w-50" />*@
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-4">
+                        <div id="photoPreviewDiv" class="text-center" style="display: none !important;">
+                            <h5>Seçtiğiniz Fotoğraf</h5>
+                            <img src="" class="w-50" id="photoPreview" />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-12 mt-1">
+                        <label>Fotoğraf Seç</label>
+                        <input type="file" class="form-control-file" name="photo" id="photo" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostedTime" class="control-label"></label>
+                <input asp-for="PostedTime" class="form-control" />
+                <span asp-validation-for="PostedTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Javascript
+{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#photo").change(function (e) {
+                $("#photoPreviewDiv").show();
+                $("#photoPreview").attr('src', URL.createObjectURL(e.target.files[0]));
+            });
+        });
+    </script>
+}

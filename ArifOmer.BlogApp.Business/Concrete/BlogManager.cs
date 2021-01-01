@@ -26,5 +26,10 @@ namespace ArifOmer.BlogApp.Business.Concrete
         {
             return await _blogDal.FindByBlogTitleAsync(title);
         }
+
+        public async Task<int> GetAllBlogCount()
+        {
+            return await _blogDal.GetCount();
+        }
     }
 }

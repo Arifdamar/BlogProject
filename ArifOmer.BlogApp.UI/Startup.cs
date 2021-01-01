@@ -8,10 +8,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ArifOmer.BlogApp.Business.Abstract;
 using ArifOmer.BlogApp.Business.Containers.MicrosoftIoC;
 using ArifOmer.BlogApp.DataAccess.Concrete.EntityFrameworkCore.Contexts;
 using ArifOmer.BlogApp.Entities.Concrete;
 using ArifOmer.BlogApp.UI.CustomCollectionExtensions;
+using ArifOmer.BlogApp.UI.Initializers;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
@@ -44,7 +46,7 @@ namespace ArifOmer.BlogApp.UI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, IBlogService blogService)
         {
             if (env.IsDevelopment())
             {
@@ -69,6 +71,7 @@ namespace ArifOmer.BlogApp.UI
             app.UseAuthorization();
 
             IdentityInitializer.SeedData(userManager, roleManager).Wait();
+            BlogInitializer.SeedData(blogService).Wait();
 
             app.UseEndpoints(endpoints =>
             {

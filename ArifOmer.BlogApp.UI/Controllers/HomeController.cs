@@ -105,6 +105,24 @@ namespace ArifOmer.BlogApp.UI.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> SignOut()
+        {
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult StatusCode(int? code)
+        {
+            if (code == 404)
+            {
+                ViewBag.Code = code;
+                ViewBag.Message = Messages.PageNotFound;
+            }
+
+            return View();
+        }
+
         protected void AddErrorRange(IEnumerable<IdentityError> errors)
         {
             foreach (var error in errors)

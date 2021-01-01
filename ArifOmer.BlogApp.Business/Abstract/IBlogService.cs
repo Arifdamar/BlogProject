@@ -8,5 +8,6 @@ namespace ArifOmer.BlogApp.Business.Abstract
     {
         Task<List<Blog>> GetAllSortedByPostedTimeAsync();
         Task<Blog> FindByBlogTitleAsync(string title);
+        Task<int> GetAllBlogCount();
     }
 }

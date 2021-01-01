@@ -8,6 +8,7 @@ namespace ArifOmer.BlogApp.Entities.Concrete
     {
         public string Name { get; set; }
         public string SurName { get; set; }
+        public string Picture { get; set; } = "default.png";
 
         public List<Blog> Blogs { get; set; }
     }

@@ -40,6 +40,13 @@ namespace ArifOmer.BlogApp.DataAccess.Concrete.EntityFrameworkCore.Repositories
             return await context.Set<TEntity>().Where(filter).OrderByDescending(keySelector).ToListAsync();
         }
 
+        public async Task<int> GetCount()
+        {
+            await using var context = new BlogContext();
+
+            return await context.Set<TEntity>().CountAsync();
+        }
+
         public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
         {
             await using var context = new BlogContext();

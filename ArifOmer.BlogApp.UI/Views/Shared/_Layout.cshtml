@@ -48,25 +48,25 @@
                         <a class="nav-link" href="#">İLETİŞİM</a>
                     </li>
 
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">@User.Identity.Name</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Logout</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item active">
-                                <a class="nav-link" href="@Url.Action("SignIn", "Home")">Giriş Yap</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="@Url.Action("Register", "Home")">Register</a>
-                            </li>
-                        }
-                    
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("Index", "Home", new { Area = User.IsInRole("Admin")?"Admin":"Member" })">@User.Identity.Name</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("SignIn", "Home")">Giriş Yap</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("Register", "Home")">Register</a>
+                        </li>
+                    }
+
                 </ul>
             </div>
         </div>
