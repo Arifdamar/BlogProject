@@ -26,6 +26,13 @@ namespace ArifOmer.BlogApp.DataAccess.Concrete.EntityFrameworkCore.Repositories
             return await context.Set<TEntity>().Where(filter).ToListAsync();
         }
 
+        public async Task<List<TEntity>> GetAllAsync<TKey>(Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, TKey>> keySelector)
+        {
+            await using var context = new BlogContext();
+
+            return await context.Set<TEntity>().Where(filter).OrderByDescending(keySelector).ToListAsync();
+        }
+
         public async Task<List<TEntity>> GetAllSortedAsync<TKey>(Expression<Func<TEntity, TKey>> keySelector)
         {
             await using var context = new BlogContext();

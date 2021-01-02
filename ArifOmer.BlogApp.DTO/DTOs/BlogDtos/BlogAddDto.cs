@@ -9,8 +9,8 @@ namespace ArifOmer.BlogApp.DTO.DTOs.BlogDtos
         public string Title { get; set; }
         public string ShortDescription { get; set; }
         public string Description { get; set; }
-        public string ImagePath { get; set; }
-        public DateTime PostedTime { get; set; } = DateTime.Now;
+        public string Picture { get; set; }
+        public DateTime PostedTime { get; set; }
 
         public int AppUserId { get; set; }
     }

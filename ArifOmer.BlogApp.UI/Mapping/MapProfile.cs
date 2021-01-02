@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using ArifOmer.BlogApp.DTO.DTOs.AppUserDtos;
 using ArifOmer.BlogApp.DTO.DTOs.BlogDtos;
+using ArifOmer.BlogApp.DTO.DTOs.CategoryDtos;
+using ArifOmer.BlogApp.DTO.DTOs.CommentDtos;
 using ArifOmer.BlogApp.Entities.Concrete;
 using ArifOmer.BlogApp.UI.Models;
 using AutoMapper;
@@ -40,6 +42,36 @@ namespace ArifOmer.BlogApp.UI.Mapping
             CreateMap<BlogUpdateDto, Blog>();
 
             #endregion
+
+            #region Category-CategoryDto
+
+            CreateMap<CategoryAddDto, Category>();
+            CreateMap<Category, CategoryAddDto>();
+
+            CreateMap<CategoryListDto, Category>();
+            CreateMap<Category, CategoryListDto>();
+
+            CreateMap<CategoryUpdateDto, Category>();
+            CreateMap<Category, CategoryUpdateDto>();
+
+            #endregion
+
+            #region Category-CategoryDto
+
+            CreateMap<Comment, CommentListDto>();
+            CreateMap<CommentListDto, Comment>();
+
+            CreateMap<Comment, CommentAddDto>();
+            CreateMap<CommentAddDto, Comment>();
+
+            #endregion
+
+
+            CreateMap<Comment, CommentListDto>();
+            CreateMap<CommentListDto, Comment>();
+
+            CreateMap<Comment, CommentAddDto>();
+            CreateMap<CommentAddDto, Comment>();
         }
     }
 }

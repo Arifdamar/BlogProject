@@ -9,11 +9,11 @@
     @foreach (var blog in Model)
     {
         <div class="card border-primary rounded bg-secondary rainbow mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <img class="card-img-top" src="~/images/@blog.ImagePath" style="max-height: 350px!important; object-fit:cover; " alt="Card image cap">
             <div class="card-body border-primary">
                 <h2 class="card-title">@blog.Title</h2>
                 <p class="card-text">@blog.ShortDescription</p>
-                <a href="@Url.Action("Detail","Blog",new {title = blog.Title})" class="btn btn-outline-primary">Daha Fazla</a>
+                <a href="@Url.Action("Detail","Blog",new {id = blog.Id})" class="btn btn-outline-primary">Daha Fazla</a>
             </div>
             <div class="card-footer text-muted text-right">
                 @blog.PostedTime.ToString("dd/MM/yyyy")

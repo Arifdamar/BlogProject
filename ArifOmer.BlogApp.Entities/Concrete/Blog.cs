@@ -10,8 +10,8 @@ namespace ArifOmer.BlogApp.Entities.Concrete
         public string Title { get; set; }
         public string ShortDescription { get; set; }
         public string Description { get; set; }
-        public string ImagePath { get; set; } = "default.png";
-        public DateTime PostedTime { get; set; } = DateTime.Now;
+        public string ImagePath { get; set; }
+        public DateTime PostedTime { get; set; }
 
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }

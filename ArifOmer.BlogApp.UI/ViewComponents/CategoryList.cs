@@ -19,8 +19,7 @@ namespace ArifOmer.BlogApp.UI.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            // ReSharper disable once AsyncConverter.AsyncWait
-            return View(_mapper.Map<List<CategoryListDto>>(_categoryService.GetAllAsync().Result));
+            return View(_categoryService.GetAllWithCategoryBlogsAsync().Result);
         }
     }
 }

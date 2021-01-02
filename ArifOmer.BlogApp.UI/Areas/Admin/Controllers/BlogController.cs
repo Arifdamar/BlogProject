@@ -7,8 +7,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using ArifOmer.BlogApp.Business.Abstract;
 using ArifOmer.BlogApp.DTO.DTOs.BlogDtos;
+using ArifOmer.BlogApp.DTO.DTOs.CategoryBlogDtos;
 using ArifOmer.BlogApp.Entities.Concrete;
 using ArifOmer.BlogApp.UI.Consts;
+using ArifOmer.BlogApp.UI.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 
@@ -21,12 +23,14 @@ namespace ArifOmer.BlogApp.UI.Areas.Admin.Controllers
         private readonly IMapper _mapper;
         private readonly IBlogService _blogService;
         private readonly IAppUserService _appUserService;
+        private readonly ICategoryService _categoryService;
 
-        public BlogController(IMapper mapper, IBlogService blogService, IAppUserService appUserService)
+        public BlogController(IMapper mapper, IBlogService blogService, IAppUserService appUserService, ICategoryService categoryService)
         {
             _mapper = mapper;
             _blogService = blogService;
             _appUserService = appUserService;
+            _categoryService = categoryService;
         }
 
         // GET: BlogController
@@ -72,7 +76,7 @@ namespace ArifOmer.BlogApp.UI.Areas.Admin.Controllers
                     string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/" + photoName);
                     await using var stream = new FileStream(path, FileMode.Create);
                     await photo.CopyToAsync(stream);
-                    model.ImagePath = photoName;
+                    model.Picture = photoName;
                 }
 
                 await _blogService.AddAsync(_mapper.Map<Blog>(model));
@@ -123,6 +127,70 @@ namespace ArifOmer.BlogApp.UI.Areas.Admin.Controllers
 
             return Json(null);
         }
-        
+
+        public async Task<IActionResult> AssignCategory(int id)
+        {
+            TempData["Active"] = ActivePage.Blog;
+
+            var categories = await _categoryService.GetAllAsync();
+            var blogCategories = await _blogService.GetCategoriesAsync(id);
+
+            TempData["blogId"] = id;
+
+            var list = new List<AssignCategoryModel>();
+
+            foreach (var category in categories)
+            {
+                var model = new AssignCategoryModel
+                {
+                    CategoryId = category.Id,
+                    CategoryName = category.Name
+                };
+
+                foreach (var blogCategory in blogCategories)
+                {
+                    if (category.Id == blogCategory.Id)
+                    {
+                        model.Exists = true;
+                    }
+                }
+
+                list.Add(model);
+            }
+
+            return View(list);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AssignCategory(List<AssignCategoryModel> list)
+        {
+            TempData["Active"] = ActivePage.Blog;
+            int id = (int)TempData["blogId"];
+
+            foreach (var item in list)
+            {
+                if (item.Exists)
+                {
+                    var model = new CategoryBlogDto
+                    {
+                        BlogId = id,
+                        CategoryId = item.CategoryId
+                    };
+
+                    await _blogService.AddToCategoryAsync(model);
+                }
+                else
+                {
+                    var model = new CategoryBlogDto
+                    {
+                        BlogId = id,
+                        CategoryId = item.CategoryId
+                    };
+
+                    await _blogService.RemoveFromCategoryAsync(model);
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

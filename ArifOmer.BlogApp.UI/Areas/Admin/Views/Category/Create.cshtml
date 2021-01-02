@@ -1,0 +1,17 @@
+@model CategoryAddDto
+
+@{
+    ViewData["Title"] = "Kategori";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" asp-action="Create" asp-area="Admin" asp-controller="Category" class="p-3">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-block btn-info">Kaydet</button>
+    </div>
+</form>
