@@ -44,7 +44,7 @@ namespace ArifOmer.BlogApp.UI.Areas.Member.Controllers
                 {
                     string extension = Path.GetExtension(photo.FileName);
                     string photoName = Guid.NewGuid() + extension;
-                    string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/" + photoName);
+                    string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/" + photoName);
                     await using var stream = new FileStream(path, FileMode.Create);
                     await photo.CopyToAsync(stream);
                     userToUpdate.Picture = photoName;
