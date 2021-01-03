@@ -16,7 +16,7 @@ Bu projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen
 Bu projede kendimizi tanıtan dinamik olarak içerik ve menü oluşturabilecek, blok yazılarına yorum yapılabilen kişisel bir web sitesi uygulaması yaptık. 
 
 ## Projede Kullanılan Teknolojiler
-* Asp.net Core 3.1 Razor Pages
+* Asp.net Core 3.1 MVC
 * C#
 * Veritabanı
 * Entity Framework Core ORM
