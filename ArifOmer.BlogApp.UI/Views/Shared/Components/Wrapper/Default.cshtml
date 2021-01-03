@@ -12,7 +12,7 @@
         <a asp-controller="Home" asp-action="Index" asp-area="" class="list-group-item list-group-item-action"><i class="fab fa-blogger-b mr-2"></i>Blog'a Dön</a>
         <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="list-group-item list-group-item-action @(activePage == ActivePage.Homepage ? "active" : "")"><i class="fas fa-home mr-2"></i>Ana Sayfa</a>
         <a asp-area="Admin" asp-controller="Blog" asp-action="Index" class="list-group-item list-group-item-action @(activePage == ActivePage.Blog ? "active" : "")"><i class="fas fa-tasks mr-2"></i>Blog İşlemleri</a>
-        <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="list-group-item list-group-item-action @(activePage == ActivePage.Category ? "active" : "")"><i class="fas fa-tasks mr-2"></i>Kategori İşlemleri</a>
+        <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="list-group-item list-group-item-action @(activePage == ActivePage.Category ? "active" : "")"><i class="fas fa-layer-group mr-2"></i>Kategori İşlemleri</a>
         <a asp-area="Admin" asp-controller="Profile" asp-action="Index" class="list-group-item list-group-item-action @(activePage == "profile" ? "active" : "")"><i class="far fa-user-circle mr-2"></i>Profil</a>
         <a asp-area="" asp-controller="Home" asp-action="SignOut" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt mr-2"></i>Çıkış Yap</a>
     </div>

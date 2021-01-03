@@ -46,14 +46,14 @@ namespace ArifOmer.BlogApp.UI.Initializers
             {
                 await categoryBlogService.AddAsync(new CategoryBlog
                 {
-                    BlogId = 1,
-                    CategoryId = 1
+                    BlogId = (await blogService.GetAllAsync())[0].Id,
+                    CategoryId = (await categoryService.GetAllAsync())[0].Id
                 });
 
                 await categoryBlogService.AddAsync(new CategoryBlog
                 {
-                    BlogId = 2,
-                    CategoryId = 1
+                    BlogId = (await blogService.GetAllAsync())[1].Id,
+                    CategoryId = (await categoryService.GetAllAsync())[0].Id
                 });
             }
         }

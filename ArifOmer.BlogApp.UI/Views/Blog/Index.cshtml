@@ -1,20 +1,23 @@
 ﻿@model List<BlogListDto>
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+
 <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
 
     @foreach (var blog in Model)
     {
-    <div class="card border-primary rounded bg-secondary rainbow mb-4">
-        <img class="card-img-top" src="~/images/@blog.ImagePath" style="max-height: 350px!important; object-fit:cover; " alt="Card image cap">
-        <div class="card-body border-primary">
-            <h2 class="card-title">@blog.Title</h2>
-            <p class="card-text">@blog.ShortDescription</p>
-            <a href="@Url.Action("Detail", "Blog", new {id = blog.Id})" class="btn btn-outline-primary">DEVAMINI OKU</a>
+        <div class="card border-primary rounded bg-secondary rainbow mb-4">
+            <img class="card-img-top" src="~/images/@blog.ImagePath" style="max-height: 350px!important; object-fit:cover; " alt="Card image cap">
+            <div class="card-body border-primary">
+                <h2 class="card-title">@blog.Title</h2>
+                <p class="card-text">@blog.ShortDescription</p>
+                <a href="@Url.Action("Detail", "Blog", new {id = blog.Id})" class="btn btn-outline-primary">@_localizer["Daha Fazla"]</a>
+            </div>
+            <div class="card-footer text-muted text-right">
+                @blog.PostedTime.ToString("dd/MM/yyyy")
+            </div>
         </div>
-        <div class="card-footer text-muted text-right">
-            @blog.PostedTime.ToString("dd/MM/yyyy")
-        </div>
-    </div>
     }
 
 </div>
