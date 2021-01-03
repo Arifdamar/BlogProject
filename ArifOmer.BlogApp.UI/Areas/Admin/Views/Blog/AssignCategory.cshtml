@@ -3,7 +3,11 @@
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>().RequestCulture.UICulture.Name;
 }
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
 
 <form asp-action="AssignCategory" method="POST">
     @for (int i = 0; i < Model.Count; i++)
@@ -16,5 +20,5 @@
             <label asp-for="@Model[i].Exists" class="form-check-label">@Model[i].CategoryName</label>
         </div>
     }
-    <button type="submit" class="btn btn-primary btn-sm">Kaydet</button>
+    <button type="submit" class="btn btn-primary btn-sm">@Localizer["Kaydet"]</button>
 </form>

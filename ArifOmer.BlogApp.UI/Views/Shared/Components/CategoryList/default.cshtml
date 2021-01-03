@@ -1,7 +1,10 @@
 ﻿@model List<ArifOmer.BlogApp.DTO.DTOs.CategoryBlogDtos.CategoryWithBlogsCountDto>
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+
 <div class="card rounded">
-    <h5 class="card-header text-center">KATEGORİLER</h5>
+    <h5 class="card-header text-center">@_localizer["KATEGORİLER"]</h5>
     <div class="list-group">
         @foreach (var category in Model)
         {

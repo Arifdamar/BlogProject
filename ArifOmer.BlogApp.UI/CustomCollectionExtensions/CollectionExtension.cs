@@ -31,6 +31,7 @@ namespace ArifOmer.BlogApp.UI.CustomCollectionExtensions
                 opt.ExpireTimeSpan = TimeSpan.FromDays(20);
                 opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 opt.LoginPath = "/Home/SignIn";
+                opt.AccessDeniedPath = "/Home/AccessDenied";
             });
         }
 

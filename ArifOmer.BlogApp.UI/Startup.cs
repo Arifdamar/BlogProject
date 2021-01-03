@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using ArifOmer.BlogApp.Business.Abstract;
@@ -17,6 +18,9 @@ using ArifOmer.BlogApp.UI.Initializers;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Options;
 
 namespace ArifOmer.BlogApp.UI
 {
@@ -32,6 +36,29 @@ namespace ArifOmer.BlogApp.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(opts =>
+            {
+                opts.ResourcesPath = "Resources";
+            });
+
+            services
+                .AddMvc()
+                .AddViewLocalization(opts => { opts.ResourcesPath = "Resources"; })
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization().AddFluentValidation();
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("tr"),
+                    new CultureInfo("en-US")
+                };
+                options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
+
             services.AddDependencies();
 
             services.AddDbContext<BlogContext>();
@@ -42,7 +69,7 @@ namespace ArifOmer.BlogApp.UI
 
             services.AddCustomValidator();
 
-            services.AddControllersWithViews().AddFluentValidation();
+            //services.AddControllersWithViews().AddFluentValidation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +92,9 @@ namespace ArifOmer.BlogApp.UI
             app.UseRouting();
 
             app.UseStaticFiles();
+
+            var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(locOptions.Value);
 
             app.UseAuthentication();
 

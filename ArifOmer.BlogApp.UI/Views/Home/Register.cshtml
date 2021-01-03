@@ -1,5 +1,7 @@
 ﻿@model AppUserAddDto
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,37 +11,37 @@
     <form asp-action="Register" method="post" class="mt-3 mx-auto p-3 shadow">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="UserName"></label>
+            <label asp-for="UserName">@_localizer["Kullanıcı Adı"]</label>
             <span asp-validation-for="UserName" class="text-danger"></span>
             <input asp-for="UserName" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Password"></label>
+            <label asp-for="Password">@_localizer["Şifre"]</label>
             <span asp-validation-for="Password" class="text-danger"></span>
             <input asp-for="Password" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="ConfirmPassword"></label>
+            <label asp-for="ConfirmPassword">@_localizer["Şifre Tekrar"]</label>
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             <input asp-for="ConfirmPassword" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Email"></label>
+            <label asp-for="Email">@_localizer["E-Posta"]</label>
             <span asp-validation-for="Email" class="text-danger"></span>
             <input asp-for="Email" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="Name"></label>
+            <label asp-for="Name">@_localizer["İsim"]</label>
             <span asp-validation-for="Name" class="text-danger"></span>
             <input asp-for="Name" class="form-control" />
         </div>
         <div class="form-group">
-            <label asp-for="SurName"></label>
+            <label asp-for="SurName">@_localizer["Soy İsim"]</label>
             <span asp-validation-for="SurName" class="text-danger"></span>
             <input asp-for="SurName" class="form-control" />
         </div>
-        <a asp-action="Index" class="btn btn-warning btn-sm">Vazgeç</a>
-        <button type="submit" class="btn btn-success btn-sm">Kayıt Ol</button>
+        <a asp-action="Index" class="btn btn-warning btn-sm">@_localizer["Vazgeç"]</a>
+        <button type="submit" class="btn btn-success btn-sm">@_localizer["Kayıt Ol"]</button>
     </form>
 </div>
 

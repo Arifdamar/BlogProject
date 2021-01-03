@@ -11,7 +11,10 @@ using ArifOmer.BlogApp.DTO.DTOs.AppUserDtos;
 using ArifOmer.BlogApp.Entities.Concrete;
 using ArifOmer.BlogApp.UI.Consts;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Localization;
 
 namespace ArifOmer.BlogApp.UI.Controllers
 {
@@ -22,18 +25,21 @@ namespace ArifOmer.BlogApp.UI.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IBlogService _blogService;
+        private readonly IStringLocalizer<HomeController> _localizer;
 
-        public HomeController(ILogger<HomeController> logger, IMapper mapper, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IBlogService blogService)
+        public HomeController(ILogger<HomeController> logger, IMapper mapper, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IBlogService blogService, IStringLocalizer<HomeController> localizer)
         {
             _logger = logger;
             _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
             _blogService = blogService;
+            _localizer = localizer;
         }
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.Deneme = _localizer["Deneme"];
             return View(await _blogService.GetAllSortedByPostedTimeAsync());
         }
 
@@ -120,6 +126,36 @@ namespace ArifOmer.BlogApp.UI.Controllers
                 ViewBag.Message = Messages.PageNotFound;
             }
 
+            return View();
+        }
+
+        public IActionResult ChangeLanguage(string returnUrl)
+        {
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            var culture = rqf.RequestCulture.Culture;
+
+            if (culture.Name == "en-US")
+            {
+                Response.Cookies.Append(
+                    CookieRequestCultureProvider.DefaultCookieName,
+                    CookieRequestCultureProvider.MakeCookieValue(new RequestCulture("tr")),
+                    new CookieOptions { Expires = DateTimeOffset.Now.AddDays(10) }
+                );
+            }
+            else
+            {
+                Response.Cookies.Append(
+                    CookieRequestCultureProvider.DefaultCookieName,
+                    CookieRequestCultureProvider.MakeCookieValue(new RequestCulture("en-US")),
+                    new CookieOptions { Expires = DateTimeOffset.Now.AddDays(10) }
+                );
+            }
+
+            return Redirect(returnUrl);
+        }
+
+        public IActionResult AccessDenied()
+        {
             return View();
         }
 

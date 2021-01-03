@@ -1,8 +1,11 @@
 ﻿@model List<Blog>
+@using Microsoft.AspNetCore.Mvc.Localization
 @{
     ViewData["Title"] = "Ana Sayfa";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@inject IViewLocalizer _localizer
 
 <div class="col-lg-8 col-md-10 mx-auto">
 
@@ -13,7 +16,7 @@
             <div class="card-body border-primary">
                 <h2 class="card-title">@blog.Title</h2>
                 <p class="card-text">@blog.ShortDescription</p>
-                <a href="@Url.Action("Detail","Blog",new {id = blog.Id})" class="btn btn-outline-primary">Daha Fazla</a>
+                <a href="@Url.Action("Detail","Blog",new {id = blog.Id})" class="btn btn-outline-primary">@_localizer["Daha Fazla"]</a>
             </div>
             <div class="card-footer text-muted text-right">
                 @blog.PostedTime.ToString("dd/MM/yyyy")
@@ -26,7 +29,7 @@
         <hr>
         <!-- Pager -->
         <div class="clearfix">
-            <a href="@Url.Action("Index","Blog")" class="btn btn-primary float-right">Tüm Bloglar</a>
+            <a href="@Url.Action("Index","Blog")" class="btn btn-primary float-right">@_localizer["Tüm Bloglar"]</a>
         </div>
     }
 

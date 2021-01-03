@@ -13,6 +13,7 @@ using ArifOmer.BlogApp.UI.Consts;
 using ArifOmer.BlogApp.UI.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Localization;
 
 namespace ArifOmer.BlogApp.UI.Areas.Admin.Controllers
 {
@@ -131,6 +132,12 @@ namespace ArifOmer.BlogApp.UI.Areas.Admin.Controllers
         public async Task<IActionResult> AssignCategory(int id)
         {
             TempData["Active"] = ActivePage.Blog;
+
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture("en-US")),
+                new CookieOptions { Expires = DateTimeOffset.Now.AddDays(10) }
+            );
 
             var categories = await _categoryService.GetAllAsync();
             var blogCategories = await _blogService.GetCategoriesAsync(id);
