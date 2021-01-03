@@ -73,7 +73,7 @@ namespace ArifOmer.BlogApp.UI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, IBlogService blogService)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, IBlogService blogService, ICategoryService categoryService, ICategoryBlogService categoryBlogService)
         {
             if (env.IsDevelopment())
             {
@@ -101,7 +101,7 @@ namespace ArifOmer.BlogApp.UI
             app.UseAuthorization();
 
             IdentityInitializer.SeedData(userManager, roleManager).Wait();
-            BlogInitializer.SeedData(blogService).Wait();
+            BlogInitializer.SeedData(blogService, categoryService, categoryBlogService).Wait();
 
             app.UseEndpoints(endpoints =>
             {

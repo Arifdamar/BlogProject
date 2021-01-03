@@ -139,16 +139,14 @@ namespace ArifOmer.BlogApp.UI.Controllers
                 Response.Cookies.Append(
                     CookieRequestCultureProvider.DefaultCookieName,
                     CookieRequestCultureProvider.MakeCookieValue(new RequestCulture("tr")),
-                    new CookieOptions { Expires = DateTimeOffset.Now.AddDays(10) }
-                );
+                    new CookieOptions { Expires = DateTimeOffset.Now.AddDays(10) });
             }
             else
             {
                 Response.Cookies.Append(
                     CookieRequestCultureProvider.DefaultCookieName,
                     CookieRequestCultureProvider.MakeCookieValue(new RequestCulture("en-US")),
-                    new CookieOptions { Expires = DateTimeOffset.Now.AddDays(10) }
-                );
+                    new CookieOptions { Expires = DateTimeOffset.Now.AddDays(10) });
             }
 
             return Redirect(returnUrl);

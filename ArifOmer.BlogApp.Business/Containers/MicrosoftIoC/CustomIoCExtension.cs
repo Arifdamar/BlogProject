@@ -24,6 +24,9 @@ namespace ArifOmer.BlogApp.Business.Containers.MicrosoftIoC
             services.AddScoped<ICategoryDal, EfCategoryRepository>();
             services.AddScoped<ICategoryService, CategoryManager>();
 
+            services.AddScoped<ICategoryBlogDal, EfCategoryBlogRepository>();
+            services.AddScoped<ICategoryBlogService, CategoryBlogManager>();
+
             services.AddScoped<IAppUserDal, EfAppUserRepository>();
             services.AddScoped<IAppUserService, AppUserManager>();
 

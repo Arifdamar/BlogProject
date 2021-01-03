@@ -15,7 +15,6 @@ namespace ArifOmer.BlogApp.DataAccess.Mapping
             builder.Property(I => I.Title).HasMaxLength(250);
 
             builder.Property(I => I.ShortDescription).IsRequired();
-            builder.Property(I => I.ShortDescription).HasMaxLength(400);
 
             builder.Property(I => I.Description).IsRequired();
             builder.Property(I => I.Description).HasColumnType("ntext");
