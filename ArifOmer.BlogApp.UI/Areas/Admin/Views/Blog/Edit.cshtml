@@ -8,7 +8,7 @@
 <h4>Blog Güncelleme</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Edit" method="post" class="w-75 mx-auto p-3" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
@@ -23,9 +23,9 @@
                 <input asp-for="ShortDescription" class="form-control" />
                 <span asp-validation-for="ShortDescription" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div>
                 <label class="control-label">Açıklama</label>
-                <input asp-for="Description" type="text" class="form-control" />
+                <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -70,10 +70,19 @@
     <a asp-action="Index">Listeye Geri Dön</a>
 </div>
 
+@section Css{
+    <link href="~/trumbowyg/dist/ui/trumbowyg.css" rel="stylesheet" />
+}
 
 @section Javascript
 {
+    <script src="~/trumbowyg/dist/trumbowyg.js"></script>
+    <script>
+        $("#Description").trumbowyg();
+    </script>
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("#photo").change(function (e) {

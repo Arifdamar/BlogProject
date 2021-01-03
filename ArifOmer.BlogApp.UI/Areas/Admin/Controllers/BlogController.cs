@@ -77,7 +77,7 @@ namespace ArifOmer.BlogApp.UI.Areas.Admin.Controllers
                     string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/" + photoName);
                     await using var stream = new FileStream(path, FileMode.Create);
                     await photo.CopyToAsync(stream);
-                    model.Picture = photoName;
+                    model.ImagePath = photoName;
                 }
 
                 await _blogService.AddAsync(_mapper.Map<Blog>(model));

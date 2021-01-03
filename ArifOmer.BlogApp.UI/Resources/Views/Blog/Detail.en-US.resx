@@ -117,10 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Deneme" xml:space="preserve">
-    <value>Testtt</value>
+  <data name="Cevapla" xml:space="preserve">
+    <value>Reply</value>
   </data>
-  <data name="Tüm Bloglar" xml:space="preserve">
-    <value>All Blogs</value>
+  <data name="E-Posta Adresiniz" xml:space="preserve">
+    <value>E-Mail Address</value>
+  </data>
+  <data name="Gönder" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Gözükmesini İstediğiniz Ad" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="Vazgeç" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Yorum Yaz" xml:space="preserve">
+    <value>Make a Comment</value>
+  </data>
+  <data name="Yorumunuz" xml:space="preserve">
+    <value>Comment</value>
   </data>
 </root>

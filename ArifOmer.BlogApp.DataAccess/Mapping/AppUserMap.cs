@@ -8,9 +8,6 @@ namespace ArifOmer.BlogApp.DataAccess.Mapping
     {
         public void Configure(EntityTypeBuilder<AppUser> builder)
         {
-            //builder.HasKey(I => I.Id);
-            //builder.Property(I => I.Id).UseIdentityColumn();
-
             builder.Property(I => I.UserName).IsRequired();
             builder.Property(I => I.UserName).HasMaxLength(150);
 

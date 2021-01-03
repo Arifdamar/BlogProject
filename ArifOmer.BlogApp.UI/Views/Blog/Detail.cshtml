@@ -1,6 +1,8 @@
 ﻿@using ArifOmer.BlogApp.DTO.DTOs.CommentDtos
 @model BlogListDto
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
 
 @{
     var commentListDtos = (List<CommentListDto>)ViewBag.Comments;
@@ -17,7 +19,7 @@
                     <div class="media-body">
                         <h5 class="mt-0">@comment.AuthorName</h5>
                         @comment.Description
-                        <button type="button" class="btn btn-sm btn-primary float-right" onclick="showCommentForm(@comment.Id,@Model.Id)">Cevapla</button>
+                        <button type="button" class="btn btn-sm btn-primary float-right" onclick="showCommentForm(@comment.Id,@Model.Id)">@_localizer["Cevapla"]</button>
                         <div id="commentBox@(comment.Id)">
 
                         </div>
@@ -62,28 +64,28 @@
 
     <!-- Comments Form -->
     <div class="card my-4">
-        <h5 class="card-header">Yorum Yaz:</h5>
+        <h5 class="card-header">@_localizer["Yorum Yaz"]</h5>
         <div class="card-body">
-            <form method="POST" asp-action="AddComment" asp-controller="Blog" >
+            <form method="POST" asp-action="AddComment" asp-controller="Blog">
                 <input type="hidden" name="BlogId" value="@Model.Id">
 
                 <div class="form-group">
-                    <label>Gözükmesini İstediğiniz Ad:</label>
+                    <label>@_localizer["Gözükmesini İstediğiniz Ad"]</label>
                     <input type="text" class="form-control" name="AuthorName" value="@User?.Identity?.Name" required>
                 </div>
                 <div class="form-group">
-                    <label>Email Adresiniz: </label>
+                    <label>@_localizer["E-Posta Adresiniz"]</label>
                     <input type="email" class="form-control" name="AuthorEmail" required>
                 </div>
                 <div class="form-group">
-                    <label>Yorumunuz :</label>
+                    <label>@_localizer["Yorumunuz"]</label>
                     <textarea class="form-control" rows="3" name="Description" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">@_localizer["Gönder"]</button>
             </form>
         </div>
     </div>
-    
+
     <!-- Comment with nested comments -->
     @{
         GetComments(commentListDtos);
@@ -97,7 +99,29 @@
 
     <script>
         function showCommentForm(id, blogId) {
-            var html = `<div class="card my-4" > <h5 class="card-header">Yorum Yaz:</h5> <div class="card-body"> <form method="POST" action="/Blog/AddComment"> <input type="hidden" name="BlogId" value="${blogId}"> <input type="hidden" name="ParentCommentId" value="${id}"> <div class="form-group"> <label >Gözükmesini İstediğiniz Ad:</label> <input type="text" class="form-control" name="AuthorName" value="@User?.Identity?.Name" required> </div><div class="form-group"> <label >Email Adresiniz: </label> <input type="email" class="form-control" name="AuthorEmail" required> </div><div class="form-group"> <label >Yorumunuz :</label> <textarea class="form-control" rows="3" name="Description" required></textarea> </div><button type="button" class="btn btn-warning" onclick="hideCommentForm(${id})">Vazgeç</button> <button type="submit" class="btn btn-primary">Gönder</button> </form> </div></div>`;
+            var html = `<div class="card my-4" >
+                            <h5 class="card-header">@_localizer["Yorum Yaz"]</h5>
+                                <div class="card-body">
+                                    <form method="POST" action="/Blog/AddComment">
+                                        <input type="hidden" name="BlogId" value="${blogId}">
+                                        <input type="hidden" name="ParentCommentId" value="${id}">
+                                        <div class="form-group">
+                                            <label>@_localizer["Gözükmesini İstediğiniz Ad"]</label>
+                                            <input type="text" class="form-control" name="AuthorName" value="@User?.Identity?.Name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>@_localizer["E-Posta Adresiniz"]</label>
+                                            <input type="email" class="form-control" name="AuthorEmail" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>@_localizer["Yorumunuz"]</label>
+                                            <textarea class="form-control" rows="3" name="Description" required></textarea>
+                                        </div>
+                                        <button type="button" class="btn btn-warning" onclick="hideCommentForm(${id})">@_localizer["Vazgeç"]</button>
+                                        <button type="submit" class="btn btn-primary">@_localizer["Gönder"]</button>
+                                    </form>
+                                </div>
+                            </div>`;
             $("#commentBox" + id).html(html);
         }
 
