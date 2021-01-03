@@ -29,7 +29,7 @@ Bu projede kendimizi tanıtan dinamik olarak içerik ve menü oluşturabilecek, 
 
 Proje açıklaması Youtube linkleri: Arif Damar anlatımı: https://youtu.be/junm0SoALS8
 
-                                   Ömer Çağrı Şayir anlatımı: https://youtu.be/dZu7xZzfDrI
+Ömer Çağrı Şayir anlatımı: https://youtu.be/dZu7xZzfDrI
 
 
 Proje’de Asp.Net Identity ile birlikte eklenen AspNetUsers, AspNetUserRoles,
