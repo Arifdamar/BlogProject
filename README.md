@@ -27,7 +27,9 @@ Bu projede kendimizi tanıtan dinamik olarak içerik ve menü oluşturabilecek, 
 * Çok dillidir (Türkçe - İngilizce)
 
 
-Proje açıklaması Youtube linkleri: Arif Damar anlatımı: https://youtu.be/junm0SoALS8
+Proje açıklaması Youtube linkleri: 
+
+Arif Damar anlatımı: https://youtu.be/junm0SoALS8
 
 Ömer Çağrı Şayir anlatımı: https://youtu.be/dZu7xZzfDrI
 
@@ -36,22 +38,25 @@ Proje’de Asp.Net Identity ile birlikte eklenen AspNetUsers, AspNetUserRoles,
 AspNetRoles, AspNetRoleClaims, AspNetUserLogins, AspNetUserClaims ve
 AspNetUserTokens tabloları haricinde Blogs, CategoryBlog, Categories ve Comments
 tabloları bulunmakta.
+
+
 Identity haricindeki ilişkileri özetlemek gerekirse;
-1-
- 1 kullanıcının çok blogu olabilir
-2-
- 1 blog 1 kullanıcıya ait olabilir
-3-
- 1 blogun çok yorumu olabilir
-4-
- 1 yorum 1 bloga ait olabilir
-5-
- 1 yorumun çok yorumu olabilir
-6-
- 1 yorum 1 ebeveyn yoruma ait olabilir
-7-
- 1 blogun çok kategorisi olabilir
-8-
- 1 kategorinin çok blogu olabilir
+
+1- 1 kullanıcının çok blogu olabilir
+
+2- 1 blog 1 kullanıcıya ait olabilir
+
+3-1 blogun çok yorumu olabilir
+
+4- 1 yorum 1 bloga ait olabilir
+
+5- 1 yorumun çok yorumu olabilir
+
+6- 1 yorum 1 ebeveyn yoruma ait olabilir
+
+7- 1 blogun çok kategorisi olabilir
+
+8- 1 kategorinin çok blogu olabilir
+
 Bloglar var kategoriler arasında çoka çok ilişki bulunduğundan araya 3. Bir
 CategoryBlogs tablosu eklenir
