@@ -3,6 +3,12 @@
 * Arif Damar - G171210009 - 2B
 * Ömer Çağrı Şayir - G171210028 - 2C
 
+Proje açıklaması Youtube linkleri: 
+
+Arif Damar anlatımı: https://youtu.be/junm0SoALS8
+
+Ömer Çağrı Şayir anlatımı: https://youtu.be/dZu7xZzfDrI
+
 ## Açıklama
 
 Bu blog projesi Sakarya Üniversitesi Bilgisayar Mühendisliği Web Programlama dersi için hazırlanmıştır. 
@@ -26,12 +32,6 @@ Bu projede kendimizi tanıtan dinamik olarak içerik ve menü oluşturabilecek, 
 * Kullanıcıların üye olacakları sayfa var.
 * Çok dillidir (Türkçe - İngilizce)
 
-
-Proje açıklaması Youtube linkleri: 
-
-Arif Damar anlatımı: https://youtu.be/junm0SoALS8
-
-Ömer Çağrı Şayir anlatımı: https://youtu.be/dZu7xZzfDrI
 
 
 Proje’de Asp.Net Identity ile birlikte eklenen AspNetUsers, AspNetUserRoles,
